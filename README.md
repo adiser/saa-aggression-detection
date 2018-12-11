@@ -41,11 +41,11 @@ The above script will generate 5 file splits based on stratified sampling. The f
 Checkpoint file will be generated after each 5 training epochs in the form of a .pth.tar file. You can set the training to continue from an existing checkpoint by doing 
 
 ```
-python main.py <ARGS >--resume <PATH TO CHECKPOINT FILE>
+python main.py <ARGS>--resume <PATH TO CHECKPOINT FILE>
 ```
 
 # Logging
-Training logs will be generated in the form of a txt file. Unfortunately I havent used any visualization tool such as tensorboard to ease this process.
+Training logs will be generated in the form of a txt file. It shows the training and testing logs. The models can achieve as high as 99% testing accuracy. The robustness of the model on a realtime video is not yet quantified. Hence I attached a realtime video inference prototype to demonsrate how it performs on realtime video
 
 # Realtime Prototype
 Run stream.py to run a realtime video prediction. It doesn't make use of any parallelization techniques hence speed can be quite slow. But good to understand and get a general feel of the algorithm 

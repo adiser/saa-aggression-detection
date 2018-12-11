@@ -1,4 +1,4 @@
-# saa-aggression-detection
+# A*STAR Situational Awareness Analytics saa-aggression-detection
 _by Sergi Adipraja Widjaja -- Conducted June - December 2018_
 
 # Dataset Description
@@ -10,7 +10,25 @@ Dataset preparation consists of
 
 In this repo, I generated the file splits (.txt files) for 5 fold cross validation under the folder data. 
 
-Refer to saa-tsn-experiments to know how to generate 
+Refer to saa-tsn-experiments to generate frames for videos. Your dataset structure should look something like the following
+
+```
+frames/aggressive/
+    ├── video_frames_k
+    │   ├── example_custom_prefix_00001.jpg
+    │   ├── example_custom_prefix_00002.jpg
+    │   ├── example_custom_prefix_00003.jpg
+    │   ├── example_custom_prefix_00004.jpg
+    │   ├── example_custom_prefix_00005.jpg
+frames/passive_rgbd/
+    ├── video_frames_k
+    │   ├── example_custom_prefix_00001.jpg
+    │   ├── example_custom_prefix_00002.jpg
+    │   ├── example_custom_prefix_00003.jpg
+    │   ├── example_custom_prefix_00004.jpg
+    │   ├── example_custom_prefix_00005.jpg
+```
+Note that classes are split per folder. I made a minor mistake, since I have also been experimenting with RGBD datasets, please keep the "_rgbd" suffix. This is to ensure the .txt split file can map to the correct folder
 
 # Checkpoint file generation
 Checkpoint file will be generated after each 5 training epochs in the form of a .pth.tar file. You can set the training to continue from an existing checkpoint by doing 

@@ -30,6 +30,14 @@ frames/passive_rgbd/
 ```
 Note that classes are split per folder. I made a minor mistake, since I have also been experimenting with RGBD datasets, please keep the "_rgbd" suffix. This is to ensure the .txt split file can map to the correct folder
 
+# Generating your own file splits
+
+You can generate your own custom file splits for other datasets that you have. For example
+```
+python generate_file_splits.py --num_splits 5 --pos_path data/aggressive --neg_path data/passive
+```
+The above script will generate 5 file splits based on stratified sampling. The file splits is generated under the data/ directory
+
 # Checkpoint file generation
 Checkpoint file will be generated after each 5 training epochs in the form of a .pth.tar file. You can set the training to continue from an existing checkpoint by doing 
 

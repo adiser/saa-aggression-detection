@@ -1,4 +1,4 @@
-# A*STAR Situational Awareness Analytics saa-aggression-detection
+# A*STAR Situational Awareness Analytics Aggression Detection
 _by Sergi Adipraja Widjaja -- Conducted June - December 2018_
 
 # Dataset Description
@@ -20,7 +20,7 @@ frames/aggressive/
     │   ├── example_custom_prefix_00003.jpg
     │   ├── example_custom_prefix_00004.jpg
     │   ├── example_custom_prefix_00005.jpg
-frames/passive_rgbd/
+frames/passive_cctv/
     ├── video_frames_k
     │   ├── example_custom_prefix_00001.jpg
     │   ├── example_custom_prefix_00002.jpg
@@ -28,13 +28,12 @@ frames/passive_rgbd/
     │   ├── example_custom_prefix_00004.jpg
     │   ├── example_custom_prefix_00005.jpg
 ```
-Note that classes are split per folder. I made a minor mistake, since I have also been experimenting with RGBD datasets, please keep the "_rgbd" suffix. This is to ensure the .txt split file can map to the correct folder
 
 # Generating your own file splits
 
-You can generate your own custom file splits for other datasets that you have. For example
+You can generate your own custom file splits for other datasets that you have.
 ```
-python generate_file_splits.py --num_splits 5 --pos_path data/aggressive --neg_path data/passive
+python generate_file_splits.py --num_splits 5 --pos_path frames/aggressive --neg_path frames/passive
 ```
 The above script will generate 5 file splits based on stratified sampling. The file splits is generated under the data/ directory
 
@@ -42,7 +41,7 @@ The above script will generate 5 file splits based on stratified sampling. The f
 Checkpoint file will be generated after each 5 training epochs in the form of a .pth.tar file. You can set the training to continue from an existing checkpoint by doing 
 
 ```
-python main.py --resume <PATH TO CHECKPOINT FILE>
+python main.py <ARGS >--resume <PATH TO CHECKPOINT FILE>
 ```
 
 # Logging
@@ -61,8 +60,7 @@ Run the demo by doing
 python stream.py 
 ```
 
-The default demo video shows a realtime prediction of two individuals involved in a fight
-My python implementation of Rank Pooling Algorithm is also included inside in the form of a function accepting a stack of frames to be rankpooled.
+The default demo video shows a realtime prediction of two individuals involved in a fight. The python implementation of Rank Pooling Algorithm is also included inside in the form of a function accepting a stack of frames to be rankpooled.
 ```
 frames = buffer.get()
 arp(frames)

@@ -77,10 +77,14 @@ The above example command does the following:
 - Batch size of *15*
 - Pretraining with kinetics 
 
-No testing command is provided due to several reasons:
-1. Performance in test data is observable in the testing logs during training
-2. Testing performance is *suspiciously* high in the order of 99% accuracy
-3. Alternatively, we can observe the real time performance of the algorithm explained in the subsequent part of this README
+Sample testing command:
+```
+python test_models.py RGB data/cctv_test_split_0.txt checkpoints/cctv_split_0_rgb_checkpoint.pth.tar --arch BNInception
+```
+
+The above example command does the following:
+- Test the model saved under *cctv_split_0_rgb_checkpoint.pth.tar*
+- On the test file list *data/cctv_test_split_0.txt* (that has been generated on the preceding steps)
 
 Training logs will be generated in the form of a [txt file](./logs/). It shows the training and testing logs. The models can achieve as high as 99% testing accuracy. The robustness of the model on a realtime video is not yet quantified. Hence I attached a realtime video inference prototype to demonsrate how it performs on realtime video
 

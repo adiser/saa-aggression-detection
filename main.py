@@ -214,7 +214,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
                    epoch, i, len(train_loader), batch_time=batch_time,
                    data_time=data_time, loss=losses, top1=top1, lr=optimizer.param_groups[-1]['lr'])))
             
-        with open('_'.join((args.snapshot_pref, args.modality.lower(), 'train_log.txt')), 'a') as fh:
+        with open('logs/' + '_'.join((args.snapshot_pref, args.modality.lower(), 'train_log.txt')), 'a') as fh:
             fh.write("{} {} {} {}\n".format(epoch, i, float(losses.val), float(top1.avg)))
 
 def validate(val_loader, model, criterion, iter, logger=None):
@@ -258,17 +258,17 @@ def validate(val_loader, model, criterion, iter, logger=None):
     print(('Testing Results: Prec@1 {top1.avg:.3f} Loss {loss.avg:.5f}'
           .format(top1=top1, loss=losses)))
 
-    with open('_'.join((args.snapshot_pref, args.modality.lower(), 'test_log.txt')), 'a') as fh:
-            fh.write("{} {} {} {}\n".format(iter, i, float(losses.avg), float(top1.avg)))
+    with open('logs/' + '_'.join((args.snapshot_pref, args.modality.lower(), 'test_log.txt')), 'a') as fh:
+            fh.write("{} {} {}\n".format(iter, float(losses.avg), float(top1.avg)))
 
     return top1.avg
 
 
 def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
-    filename = '_'.join((args.snapshot_pref, args.modality.lower(), filename))
+    filename = 'checkpoints/' + '_'.join((args.snapshot_pref, args.modality.lower(), filename))
     torch.save(state, filename)
     if is_best:
-        best_name = '_'.join((args.snapshot_pref, args.modality.lower(), 'model_best.pth.tar'))
+        best_name = 'checkpoints/' + '_'.join((args.snapshot_pref, args.modality.lower(), 'model_best.pth.tar'))
         shutil.copyfile(filename, best_name)
 
 

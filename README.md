@@ -58,7 +58,7 @@ No testing command is provided due to several reasons:
 2. Testing performance is *suspiciously* high in the order of 99% accuracy
 3. Alternatively, we can observe the real time performance of the algorithm explained in the subsequent part of this README
 
-Training logs will be generated in the form of a txt file. It shows the training and testing logs. The models can achieve as high as 99% testing accuracy. The robustness of the model on a realtime video is not yet quantified. Hence I attached a realtime video inference prototype to demonsrate how it performs on realtime video
+Training logs will be generated in the form of a [txt file](./logs/). It shows the training and testing logs. The models can achieve as high as 99% testing accuracy. The robustness of the model on a realtime video is not yet quantified. Hence I attached a realtime video inference prototype to demonsrate how it performs on realtime video
 
 The training logs are formatted as follows
 ```

@@ -1,6 +1,0 @@
-python main.py aggression RGB data/upsampled_train_split_0.txt data/upsampled_test_split_0.txt --arch BNInception --gpus 0 1 2 3 4 --lr 0.001 --lr_steps 10 15 --epochs 100 --gd 20 -b 15 -j 4 --pretrained_on_kinetics 1 --snapshot_pref upsampled_split_0  
-python main.py aggression RGB data/upsampled_train_split_1.txt data/upsampled_test_split_1.txt --arch BNInception --gpus 0 1 2 3 4 --lr 0.001 --lr_steps 10 15 --epochs 100 --gd 20 -b 15 -j 4 --pretrained_on_kinetics 1 --snapshot_pref upsampled_split_1
-python main.py aggression RGB data/upsampled_train_split_2.txt data/upsampled_test_split_2.txt --arch BNInception --gpus 0 1 2 3 4 --lr 0.001 --lr_steps 10 15 --epochs 100 --gd 20 -b 15 -j 4 --pretrained_on_kinetics 1 --snapshot_pref upsampled_split_2
-python main.py aggression RGB data/upsampled_train_split_3.txt data/upsampled_test_split_3.txt --arch BNInception --gpus 0 1 2 3 4 --lr 0.001 --lr_steps 10 15 --epochs 100 --gd 20 -b 15 -j 4 --pretrained_on_kinetics 1 --snapshot_pref upsampled_split_3
-python main.py aggression RGB data/upsampled_train_split_4.txt data/upsampled_test_split_4.txt --arch BNInception --gpus 0 1 2 3 4 --lr 0.001 --lr_steps 10 15 --epochs 100 --gd 20 -b 15 -j 4 --pretrained_on_kinetics 1 --snapshot_pref upsampled_split_4
-

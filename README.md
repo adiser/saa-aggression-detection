@@ -1,6 +1,30 @@
 # A*STAR Situational Awareness Analytics Aggression Detection
 _by Sergi Adipraja Widjaja -- Conducted June - December 2018, a continuation of [saa-tsn-experiments](https://github.com/adiser/saa-tsn-experiments)_
 
+# Realtime Prototype
+Run stream.py to run a realtime video prediction. It doesn't make use of any parallelization techniques hence speed can be quite slow. But good to understand and get a general feel of the algorithm 
+
+![](aggressive.gif)
+
+Implementation detail:
+* I fed a stack of images from a video to a buffer, this buffer can be invariant in length. Since this is a non-optimized version, a buffer size of 15 is used. In practice, the buffer size can be in the order of hundreds
+* The model reads the buffered frames and generate a binary prediction
+
+Run the demo by doing
+
+```
+python stream.py 
+```
+
+The default demo video shows a realtime prediction of two individuals involved in a fight. The python implementation of Rank Pooling Algorithm is also included inside in the form of a function accepting a stack of frames to be rankpooled.
+```
+frames = buffer.get()
+arp(frames)
+```
+It makes use of the harmonic series to be able to generate the approximate rank pooled images
+
+
+
 # Dataset Preparation
 
 Dataset preparation consists of
@@ -86,27 +110,4 @@ model = torch.nn.DataParallel(model, device_ids=args.gpus).cuda()
 checkpoint = torch.load('checkpoints/sample.pth.tar')
 model.load_state_dict(checkpoint['state_dict'])
 ```
-
-# Realtime Prototype
-Run stream.py to run a realtime video prediction. It doesn't make use of any parallelization techniques hence speed can be quite slow. But good to understand and get a general feel of the algorithm 
-
-Implementation detail:
-* I fed a stack of images from a video to a buffer, this buffer can be invariant in length. Since this is a non-optimized version, a buffer size of 15 is used. In practice, the buffer size can be in the order of hundreds
-* The model reads the buffered frames and generate a binary prediction
-
-Run the demo by doing
-
-```
-python stream.py 
-```
-
-The default demo video shows a realtime prediction of two individuals involved in a fight. The python implementation of Rank Pooling Algorithm is also included inside in the form of a function accepting a stack of frames to be rankpooled.
-```
-frames = buffer.get()
-arp(frames)
-```
-It makes use of the harmonic series to be able to generate the approximate rank pooled images
-
-
-
  

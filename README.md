@@ -71,9 +71,20 @@ While the testing logs are formatted as follows
 <ITERATIONS> <LOSS> <ACCURACY>
 ```
 
-Checkpoint file will be generated after each 5 training epochs in the form of a .pth.tar file. You can set the training to continue from an existing checkpoint by doing 
+Checkpoint file will be generated after each 5 training epochs in the form of a .pth.tar file under [checkpoints](checkpoints/) directory. You can set the training to continue from an existing checkpoint by doing 
 ```
 python main.py <ARGS>--resume <PATH TO CHECKPOINT FILE>
+```
+
+Sample code to read checkpoint file
+```
+# Instantiate TSN 
+model = TSN(**args)
+model = torch.nn.DataParallel(model, device_ids=args.gpus).cuda()
+
+# Load the checkpoint
+checkpoint = torch.load('checkpoints/sample.pth.tar')
+model.load_state_dict(checkpoint['state_dict'])
 ```
 
 # Realtime Prototype
